@@ -1,0 +1,43 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+    <title>Form Submission</title>
+</head>
+<body class="bg-cyan-100 flex flex-col h-screen w-screen items-center justify-center">
+    <h1 class="text-3xl font-bold font-mono ">User Information</h1>
+    <form class="w-96 bg-white flex flex-col gap-4 p-4" action="/submit", method="post">
+
+        <input class="p-2 bg-gray-100 border-0 outline-0" type="text" name="username" placeholder="Enter your username" required />
+        <input class="p-2  bg-gray-100 border-0 outline-0" type="email" name="email" placeholder="Enter your email" required />
+
+        <select name="country" required>
+            <option value="" disabled>Select Country</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Kenya">Kenya</option>
+            <option value="USA">USA</option>
+            <option value="China">China</option>
+        </select>
+
+        <label for="male">
+             <input type="radio" name="gender" value="male" required />
+            Male
+        </label>
+       
+
+        <label for="female">
+            <input type="radio" name="gender" value="female" required />
+            Female
+        </label>
+      
+
+        <button class=" py-2 bg-yellow-400 font-bold font-mono cursor-pointer hover:bg-yellow-600" type="submit">Register</button>
+    </form>
+</body>
+</html>
