@@ -26,8 +26,11 @@ app.use(express.urlencoded({ extended: true }));
 // post some formdata
 app.post("/submit", (req, res) => {
     
+    
     const {username, email, country, gender } = req.body
     const submission = `Username:${username}, Email:${email}, Country:${country}, Gender:${gender}\n`
+
+    console.log("Received form:", req.body) 
 
     const filePath = path.join(__dirname, "data", "submission.txt");
 
