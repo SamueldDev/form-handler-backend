@@ -7,24 +7,40 @@ import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config()
 
+// get the current file and directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// set up port
 const PORT = process.env.PORT || 3000;
-// const HOST = process.env.HOST || "localhost";
 
 const app = express()
-// allow cross origin platform
+
+// allow cross origin platform 
 app.use(cors({
     origin: "https://form-submssion-fullstack.netlify.app/",
-    method: ["POST"]
+    methods: ["POST"]
 })); 
-
 
 // server static files
 app.use(express.static('public'))
 
 // middleware to parse data
 app.use(express.urlencoded({ extended: true }));
+
+
+// ensure the data folder exist before handling routes
+const dataDir = path.join(__dirname, "data")
+
+try {
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+    console.log("✅ 'data' folder created.");
+  }
+} catch (err) {
+  console.error("Failed to create 'data' folder:", err.message);
+  process.exit(1); // Stop the app completely due to fatal error
+}
 
 // post some formdata
 app.post("/submit", (req, res) => {
@@ -35,13 +51,6 @@ app.post("/submit", (req, res) => {
     console.log("Received from:", req.body) 
 
     const filePath = path.join(__dirname, "data", "submission.txt");
-
-    // Ensure the directory exist
-    fs.mkdir(path.join(__dirname, "data"), {recursive: true}, (err) => {
-        if(err){
-            console.error("Error creating folder:", err.message)
-            return res.status(500).send("server error")
-        }
 
         // append the submssion from the frontend to the file
          fs.appendFile(filePath, submission, "utf8", (err) => {
@@ -57,11 +66,22 @@ app.post("/submit", (req, res) => {
         `);
     })
 
-    })
-
 })
-
 
 app.listen(PORT, () => {
     console.log(`server running at port ${PORT}`) 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
