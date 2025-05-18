@@ -11,7 +11,7 @@ dotenv.config()
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || "localhost";
+// const HOST = process.env.HOST || "localhost";
 
 
 const app = express()
@@ -56,5 +56,5 @@ app.post("/submit", (req, res) => {
 
 
 app.listen(PORT, () => {
-    console.log(`server running at port http://${HOST}:${PORT}`)
+    console.log(`server running at port ${PORT}`)
 })
