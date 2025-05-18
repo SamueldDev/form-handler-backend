@@ -3,6 +3,7 @@ import express from "express"
 import path from "path"
 import { fileURLToPath } from "url"
 import fs from "fs"
+import cors from "cors"
 import dotenv from "dotenv"
 dotenv.config()
 
@@ -12,6 +13,12 @@ const PORT = process.env.PORT || 3000;
 // const HOST = process.env.HOST || "localhost";
 
 const app = express()
+// allow cross origin platform
+app.use(cors({
+    origin: "https://form-submssion-fullstack.netlify.app/",
+    method: ["POST"]
+})); 
+
 
 // server static files
 app.use(express.static('public'))
