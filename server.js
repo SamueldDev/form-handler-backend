@@ -23,7 +23,7 @@ app.use(cors({
 })); 
 
 // server static files
-app.use(express.static('public'))
+//app.use(express.static('public'))
 
 // middleware to parse data
 app.use(express.urlencoded({ extended: true }));
@@ -48,7 +48,7 @@ app.post("/submit", (req, res) => {
     const {username, email, country, gender } = req.body
     const submission = `Username:${username}, Email:${email}, Country:${country}, Gender:${gender}\n`
 
-    console.log("Received from:", req.body) 
+    // console.log("Received from:", req.body) 
 
     const filePath = path.join(__dirname, "data", "submission.txt");
 

@@ -1,9 +1,4 @@
 
 
 
-Username:SamDdev, Email:sam@gmail.com, Country:USA, Gender:male
-Username:Benmighty, Email:ben@gmail.com, Country:Kenya, Gender:male
-
-Username:bbb, Email:joe@schmoe.com, Country:Kenya, Gender:female
-Username:james, Email:james@gmail.com, Country:Nigeria, Gender:male
-Username:SamDdev, Email:joe@schmoe.com, Country:Nigeria, Gender:female
+Username:sam, Email:sam@gmail.com, Country:Kenya, Gender:male
